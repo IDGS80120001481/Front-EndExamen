@@ -1,0 +1,51 @@
+<br>
+<div class="container">
+    <input type="search" placeholder="Busca tu producto" id="search" (input)="searchChange($event)"/>
+</div>
+<br>
+<div class="container">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="saco" (change)="filterProductsCategory($event)">
+        <label class="form-check-label" for="inlineRadio1">Sacos de box</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="guantes" (change)="filterProductsCategory($event)">
+        <label class="form-check-label" for="inlineRadio2">Guantes de box</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="careta" (change)="filterProductsCategory($event)">
+        <label class="form-check-label" for="inlineRadio2">Caretas de box</label>
+      </div>
+</div>
+<br>
+<div style="width: 70%; margin: 0 auto">
+    <div class="container text-center">
+      <div class="row align-items-start">
+        <div class="col-4" *ngFor="let producto of listaProductos; let i = index">
+          <div class="card">
+            <div class="image_container">
+              <img src="{{producto.imagen}}" alt="">
+            </div>
+            <div class="title">
+              <span>{{producto.nombre}}</span>
+            </div>
+            <div class="size">
+              <span>Descripcion: </span>
+              <p style="text-align: justify;">{{producto.descripcion}}</p>
+            </div>
+            <div class="action">
+              <div class="price">
+                <span>${{producto.precio}}</span>
+              </div>
+              <button class="cart-button"> <i class="fa-solid fa-cart-shopping"></i>
+                <span>Añadir</span>
+              </button>
+            </div>
+          </div>
+          <div *ngIf="i % 3 > 0">
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
